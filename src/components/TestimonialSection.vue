@@ -1,106 +1,70 @@
 <template>
-  <section class="section-testimonial section pc" id ="testimonial">
+  <section class="section section-testimonial">
     <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <a
-            href="https://www.google.com/maps/place/Hua+Auto+Electrical/@3.2077801,101.6163059,17z/data=!4m8!3m7!1s0x31cc4ba37c961ba1:0xbeb97a7ba35bead0!8m2!3d3.2077801!4d101.6211768!9m1!1b1!16s%2Fg%2F11byn046bl?entry=ttu&g_ep=EgoyMDI1MDUxMi4wIKXMDSoASAFQAw%3D%3D"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="google-review-link"
-          >
-            <img
-              style="display: block; max-width: 360px; width: 100%; margin: 0 auto 40px;"
-              src="/images/google-review-new.png"
-              alt="Google Reviews HUA AUTO ELECTRICAL"
-            />
-          </a>
+      <h2 class="section__title">What People Say About Us</h2>
+      <Carousel
+        :items-to-show="settings.itemsToShow"
+        :snap-align="settings.snapAlign"
+        :wrap-around="true"
+        :breakpoints="breakpoints"
+        class="carousel"
+      >
+        <Slide v-for="(testimonial, index) in testimonials" :key="index">
+          <div class="testimonial-card">
+            <p class="testimonial-card__text">“{{ testimonial.text }}”</p>
+            <h3 class="testimonial-card__author">{{ testimonial.author }}</h3>
+            <p class="testimonial-card__role">{{ testimonial.role }}</p>
+          </div>
+        </Slide>
 
-          <Carousel 
-            :settings="settings" 
-            :breakpoints="breakpoints" 
-            :wrap-around="false"
-            class="testimonial-carousel"
-          >
-            <Slide v-for="testimonial in testimonials" :key="testimonial.id">
-              <div class="testi-item">
-                <div class="testi-box">
-                  <div class="testi-content">
-                    <div class="testi-imgs">
-                      <img class="testi-pic" :src="testimonial.customerImage" :alt="testimonial.customerName" />
-                      <img class="testi-ggl" :src="testimonial.googleImage" alt="Google Review" />
-                    </div>
-                    <div class="testi-monial" v-html="testimonial.testimonialText"></div>
-                  </div>
-                  <div class="testi-footer">
-                    <img class="testi-star" :src="testimonial.starImage" alt="Star Rating" />
-                    <div class="testi-cust">
-                      <div class="testi-name">
-                        <b>{{ testimonial.customerName }}</b>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Slide>
-
-            <template #addons>
-              <Navigation />
-              <Pagination />
-            </template>
-          </Carousel>
-        </div>
-      </div>
+        <template #addons>
+          <Pagination />
+          <Navigation />
+        </template>
+      </Carousel>
     </div>
   </section>
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script lang="ts" setup>
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
+import type { Breakpoints } from 'vue3-carousel';
 
-const testimonials = ref([
+const testimonials = [
   {
-    id: 1,
-    customerImage: '/images/customer-01.png',
-    googleImage: '/images/google.png',
-    testimonialText: "An expert wireman—he solved my Beemer's rear light wiring issue in under 10 minutes at an extremely reasonable price. Highly recommended!",
-    starImage: '/images/5-stars.png',
-    customerName: 'Jasmeet Randhawa'
+    text: "The service was amazing! I'm definitely coming back.",
+    author: 'Jane Doe',
+    role: 'Marketing Director',
   },
   {
-    id: 2,
-    customerImage: '/images/customer-02.png',
-    googleImage: '/images/google.png',
-    testimonialText: "Expert advice, thorough inspections, and excellent service. They've been around for a while—and it shows. 👍🏼",
-    starImage: '/images/5-stars.png',
-    customerName: 'Ryan Wong'
+    text: "Quick, reliable, and friendly. Couldn't ask for more.",
+    author: 'John Smith',
+    role: 'Software Engineer',
   },
   {
-    id: 3,
-    customerImage: '/images/customer-03.png',
-    googleImage: '/images/google.png',
-    testimonialText: 'Professional workers and satisfying results.',
-    starImage: '/images/5-stars.png',
-    customerName: 'Shah Zek'
+    text: 'Very professional and high quality work!',
+    author: 'Lisa Wong',
+    role: 'Project Manager',
   },
   {
-    id: 4,
-    customerImage: '/images/customer-04.png',
-    googleImage: '/images/google.png',
-    testimonialText: "Reliable one-stop car repair service—covering everything from engine and electrical work to detailing, A/C, and routine maintenance. Professional, efficient, and highly recommended!",
-    starImage: '/images/5-stars.png',
-    customerName: 'kelvin hua'
-  }
-]);
+    text: 'Their attention to detail is unmatched.',
+    author: 'Carlos Martinez',
+    role: 'Creative Director',
+  },
+  {
+    text: 'Prompt responses and great results. Highly recommended.',
+    author: 'Emily Zhang',
+    role: 'Business Analyst',
+  },
+];
 
-const settings = ref({
+const settings = {
   itemsToShow: 1,
-  snapAlign: 'center',
-});
+  snapAlign: 'center' as const,
+};
 
-const breakpoints = ref({
+const breakpoints: Breakpoints = {
   700: {
     itemsToShow: 2,
     snapAlign: 'start',
@@ -112,167 +76,57 @@ const breakpoints = ref({
   1300: {
     itemsToShow: 3.5,
     snapAlign: 'start',
-  }
-});
+  },
+};
 </script>
 
 <style scoped>
 .section-testimonial {
-  position: relative;
-  padding: 5rem 1rem;
+  padding: 80px 0;
+  background: linear-gradient(
+      rgba(26, 42, 68, 0.7),
+      rgba(26, 42, 68, 0.7)
+    ),
+    url('./images/testimonial-background.jpg') center/cover no-repeat;
+  color: #fff;
 }
 
-.section-testimonial::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(rgba(26, 42, 68, 0.7), rgba(26, 42, 68, 0.7)),
-              url('./images/testimonial-background.jpg'); /* Replace with your path */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1;
-}
-
-
-.container {
-  position: relative; /* Ensure content stays above the background */
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-  z-index: 1;
-}
-
-/* Rest of your existing styles remain the same */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -15px;
-}
-
-.col-xs-12 {
-  width: 100%;
-  padding: 0 15px;
-}
-
-.google-review-link {
-  display: block;
+.section__title {
   text-align: center;
   margin-bottom: 40px;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
-/* Carousel fixes */
-:deep(.testimonial-carousel) {
-  opacity: 1 !important;
-  visibility: visible !important;
+.carousel {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.testi-item {
-  padding: 0 16px;
-  box-sizing: border-box;
-  height: 100%;
-}
-
-.testi-box {
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 20px;
+.testimonial-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 10px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  justify-content: space-between;
 }
 
-.testi-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.testi-content {
-  flex: 1;
-}
-
-.testi-imgs {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.testi-pic {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-right: 15px;
-  object-fit: cover;
-  border: 2px solid #eee;
-}
-
-.testi-ggl {
-  width: 24px;
-  height: 24px;
-  margin-left: auto;
-}
-
-.testi-monial {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #555;
+.testimonial-card__text {
+  font-style: italic;
   margin-bottom: 20px;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-size: 1.1rem;
 }
 
-.testi-footer {
-  margin-top: auto;
+.testimonial-card__author {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
 }
 
-.testi-star {
-  width: 100px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-.testi-name {
-  font-size: 15px;
-  color: #333;
-}
-
-.testi-name b {
-  font-weight: 600;
-}
-
-/* Carousel navigation styles */
-:deep(.carousel__prev),
-:deep(.carousel__next) {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  transition: background-color 0.3s ease;
-}
-
-:deep(.carousel__prev:hover),
-:deep(.carousel__next:hover) {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-:deep(.carousel__pagination-button) {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-:deep(.carousel__pagination-button--active) {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .testi-box {
-    min-height: 280px;
-  }
+.testimonial-card__role {
+  font-size: 0.95rem;
+  color: #ccc;
 }
 </style>
