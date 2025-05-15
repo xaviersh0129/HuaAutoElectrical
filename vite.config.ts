@@ -15,4 +15,5 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  base: '/HuaAutoElectrical/'  // Replace <REPO_NAME> with your repo name
 })
