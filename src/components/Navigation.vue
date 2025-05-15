@@ -2,7 +2,7 @@
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
-  name: 'Navigation',
+  name: 'AppNavigation',
   setup() {
     const isOpen = ref(false)
 
@@ -15,7 +15,7 @@ export default defineComponent({
     }
 
     return { isOpen, toggleMenu, closeMenu }
-  }
+  },
 })
 </script>
 
@@ -31,7 +31,8 @@ export default defineComponent({
       <ul :class="['navbar-links', { show: isOpen }]">
         <li><a href="#home" @click="closeMenu">Home</a></li>
         <li><a href="#services" @click="closeMenu">Services</a></li>
-        <li><a href="#testimonial" @click="closeMenu">Testimonial</a></li> <!-- ✅ Added this line -->
+        <li><a href="#testimonial" @click="closeMenu">Testimonial</a></li>
+        <!-- ✅ Added this line -->
         <li><a href="#contact" @click="closeMenu">Contact</a></li>
       </ul>
     </div>
@@ -49,7 +50,7 @@ export default defineComponent({
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: #1A2A44;
+  background-color: #1a2a44;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
@@ -65,9 +66,9 @@ export default defineComponent({
 .navbar-logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #F5F5F5;
+  color: #f5f5f5;
   text-transform: uppercase;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .navbar-links {
@@ -78,12 +79,12 @@ export default defineComponent({
 
 .navbar-links a {
   text-decoration: none;
-  color: #F5F5F5;
+  color: #f5f5f5;
   font-weight: 500;
 }
 
 .navbar-links a:hover {
-  color: #D3D3D3;
+  color: #d3d3d3;
 }
 
 .hamburger {
@@ -99,7 +100,7 @@ export default defineComponent({
   display: block;
   width: 25px;
   height: 3px;
-  background: #F5F5F5;
+  background: #f5f5f5;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -113,7 +114,7 @@ export default defineComponent({
     position: absolute;
     top: 64px;
     right: 0;
-    background: #1A2A44;
+    background: #1a2a44;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
@@ -127,11 +128,11 @@ export default defineComponent({
   }
 
   .navbar-links a {
-    color: #F5F5F5;
+    color: #f5f5f5;
   }
 
   .navbar-links a:hover {
-    color: #D3D3D3;
+    color: #d3d3d3;
   }
 }
 

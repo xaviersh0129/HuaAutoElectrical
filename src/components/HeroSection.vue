@@ -12,7 +12,12 @@
         {{ heroData?.subtitle }}
       </p>
       <div class="hero-buttons">
-        <a href="https://wa.me/60122035578" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        <a
+          href="https://wa.me/60122035578"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
           <MessageCircle class="whatsapp-icon" />
           Whatsapp Us
         </a>
@@ -36,9 +41,9 @@ export default defineComponent({
   components: { MessageCircle },
   setup() {
     const heroData = ref<{
-      profileImage: string;
-      name: string;
-      subtitle: string;
+      profileImage: string
+      name: string
+      subtitle: string
     } | null>(null)
 
     onMounted(async () => {
@@ -54,7 +59,7 @@ export default defineComponent({
     })
 
     return { heroData }
-  }
+  },
 })
 </script>
 
@@ -102,19 +107,19 @@ export default defineComponent({
   height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .hero-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #F5F5F5;
+  color: #f5f5f5;
   margin-bottom: 1rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Added for better readability */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Added for better readability */
 }
 
 .gradient-text {
-  background: linear-gradient(to right, #F5F5F5, #D3D3D3);
+  background: linear-gradient(to right, #f5f5f5, #d3d3d3);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -123,11 +128,11 @@ export default defineComponent({
 
 .hero-subtitle {
   font-size: 1.125rem;
-  color: #D3D3D3;
+  color: #d3d3d3;
   max-width: 40rem;
   margin: 0 auto 2rem;
   line-height: 1.5;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Added for better readability */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Added for better readability */
 }
 
 .hero-buttons {
@@ -141,15 +146,17 @@ export default defineComponent({
   font-weight: 500;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   display: flex;
   align-items: center;
   gap: 0.5rem; /* Space between icon and text */
 }
 
 .btn-primary {
-  background-color: #25D366;
-  color: #FFFFFF;
+  background-color: #25d366;
+  color: #ffffff;
 }
 
 .btn-primary:hover {
@@ -158,14 +165,14 @@ export default defineComponent({
 }
 
 .btn-outline {
-  border: 2px solid #D3D3D3;
-  color: #F5F5F5;
-  background-color: #1A2A44;
+  border: 2px solid #d3d3d3;
+  color: #f5f5f5;
+  background-color: #1a2a44;
 }
 
 .btn-outline:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .whatsapp-icon {
@@ -178,7 +185,7 @@ export default defineComponent({
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  color: #D3D3D3;
+  color: #d3d3d3;
   animation: arrow-bounce 2s infinite;
   text-decoration: none;
   z-index: 2; /* Above the overlay */
@@ -189,7 +196,11 @@ export default defineComponent({
 }
 
 @keyframes arrow-bounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translate(-50%, 0);
   }
   40% {
@@ -205,23 +216,23 @@ export default defineComponent({
     min-height: 100vh;
     padding: 1rem;
   }
-  
+
   .profile-img {
     width: 150px;
     height: 150px;
   }
-  
+
   .hero-title {
     font-size: 1.5rem;
   }
   .gradient-text {
     font-size: 2.5rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1rem;
   }
-  
+
   .hero-buttons {
     flex-direction: column;
     gap: 0.5rem;
