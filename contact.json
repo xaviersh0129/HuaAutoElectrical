@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "label": "Call Us <br> +60122035578",
+      "url": "tel:+60122035578",
+      "icon": "phone"
+    },
+    {
+      "label": "Email Us <br> huaautoelectrical@gmail.com",
+      "url": "mailto:huaautoelectrical@gmail.com",
+      "icon": "mail"
+    },
+    {
+      "label": "Visit Us <br> 127, Jalan Mahogani SD 1/4, BSD",
+      "url": "https://www.google.com/maps/place/Hua+Auto+Electrical/@3.2077a801,101.6163059,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc4ba37c961ba1:0xbeb97a7ba35bead0!8m2!3d3.2077801!4d101.6211768!16s%2Fg%2F11byn046bl?entry=ttu&g_ep=EgoyMDI1MDUxMi4wIKXMDSoASAFQAw%3D%3D",
+      "icon": "location"
+    }
+  ]
+}
